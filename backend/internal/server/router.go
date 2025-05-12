@@ -9,7 +9,6 @@ import (
 const (
 	v1                            = "/v1"
 	listProductsEndpointPath      = v1 + "/products"
-	getProductByIDEndpointPath    = v1 + "/products/{productID}"
 	createProductEndpointPath     = v1 + "/products"
 	deleteProductByIDEndpointPath = v1 + "/products/{productID}"
 
@@ -26,14 +25,6 @@ func (s *Server) declareRoutes() {
 		Path:          listProductsEndpointPath,
 		DefaultStatus: http.StatusOK,
 	}, s.ListProducts)
-	var getProductByIDResponse *GetProductByIDResponse
-	huma.Register(s.api, huma.Operation{
-		OperationID:   huma.GenerateOperationID(http.MethodGet, getProductByIDEndpointPath, getProductByIDResponse),
-		Summary:       "v1 - Get Product by ID",
-		Method:        http.MethodGet,
-		Path:          getProductByIDEndpointPath,
-		DefaultStatus: http.StatusOK,
-	}, s.GetProductByID)
 	var createProductResponse *CreateProductResponse
 	huma.Register(s.api, huma.Operation{
 		OperationID:   huma.GenerateOperationID(http.MethodPost, createProductEndpointPath, createProductResponse),
@@ -109,14 +100,6 @@ type ListProductsResponse struct {
 
 type ListProductsResponseBody struct {
 	Data []ProductResponseBody
-}
-
-type GetProductByIDRequest struct {
-	ID string `path:"productID" example:"018ef16a-31a7-7e11-a77d-78b2eea91e2f" doc:"Product ID"`
-}
-
-type GetProductByIDResponse struct {
-	Body ProductResponseBody
 }
 
 type ProductResponseBody struct {

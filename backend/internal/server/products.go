@@ -11,7 +11,6 @@ import (
 
 type ProductsService interface {
 	List(ctx context.Context) ([]model.Product, error)
-	GetByID(ctx context.Context, id string) (*model.Product, error)
 	Create(ctx context.Context, product model.Product) (*model.Product, error)
 	DeleteByID(ctx context.Context, id string) error
 }
@@ -31,20 +30,6 @@ func (s *Server) ListProducts(ctx context.Context, _ *ListProductsRequest) (*Lis
 		Body: ListProductsResponseBody{
 			Data: data,
 		},
-	}, nil
-}
-
-func (s *Server) GetProductByID(ctx context.Context, req *GetProductByIDRequest) (*GetProductByIDResponse, error) {
-	product, err := s.productService.GetByID(ctx, req.ID)
-	if err != nil {
-		if errors.Is(err, service.ErrProductNotFound) {
-			return nil, huma.Error404NotFound("product not found")
-		}
-		return nil, err
-	}
-
-	return &GetProductByIDResponse{
-		Body: convertProductToResponseBody(*product),
 	}, nil
 }
 

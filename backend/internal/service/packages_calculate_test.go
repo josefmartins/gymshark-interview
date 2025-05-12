@@ -200,3 +200,13 @@ func TestCalculatePackagesOnInvalidProduct(t *testing.T) {
 		t.Fail()
 	}
 }
+
+func TestCalculatePackagesOnProductWithoutPackageSizes(t *testing.T) {
+	mockStorage := &mockPackageStorage{wantRes: &model.Product{ID: uuid.NewString(), Name: "ABC"}}
+	service := NewPackageService(mockStorage)
+
+	_, err := service.CalculatePackages(context.TODO(), "ABC", 100)
+	if err == nil || !errors.Is(err, ErrProductWithoutPackages) {
+		t.Fail()
+	}
+}

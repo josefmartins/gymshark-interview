@@ -19,6 +19,8 @@ type Packages struct {
 	storage PackagesStorage
 }
 
+var ErrProductNotFound = errors.New("product not found")
+
 type PackagesStorage interface {
 	GetProductWithPackageSizes(ctx context.Context, id string) (*model.Product, error)
 	AddPackageSize(ctx context.Context, productId string, size int) error

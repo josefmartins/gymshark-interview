@@ -19,30 +19,17 @@ type Products struct {
 
 type ProductsStorage interface {
 	ListProducts(ctx context.Context) ([]model.Product, error)
-	GetProductWithPackageSizes(ctx context.Context, id string) (*model.Product, error)
 	CreateProduct(ctx context.Context, product model.Product) (*model.Product, error)
 	DeleteProduct(ctx context.Context, id string) error
 }
 
 var (
-	ErrProductNotFound        = errors.New("product not found")
 	ErrConstraintViolation    = errors.New("constraint violation")
 	ErrProductWithoutPackages = errors.New("product has no available package sizes")
 )
 
 func (s *Products) List(ctx context.Context) ([]model.Product, error) {
 	return s.storage.ListProducts(ctx)
-}
-
-func (s *Products) GetByID(ctx context.Context, id string) (*model.Product, error) {
-	product, err := s.storage.GetProductWithPackageSizes(ctx, id)
-	if err != nil {
-		if errors.Is(err, storage.ErrProductNotFound) {
-			return nil, ErrProductNotFound
-		}
-		return nil, err
-	}
-	return product, nil
 }
 
 func (s *Products) Create(ctx context.Context, product model.Product) (*model.Product, error) {

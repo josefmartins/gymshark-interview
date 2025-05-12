@@ -27,8 +27,12 @@
 - Using github.com/rubenv/sql-migrate for setting the database scheme and seed test examples.
 - List products endpoint should be paginated.   
 - Split the backend in 3 different layers to keep domains segregated: server, service (actual business logic) and storage. models package is common to the logical layers and makes mapping easier.
-- REST API can be split into 2: CRUD for products and specific add/remove package size to product and calculate package units. API docs can be consulted in: TODO 
-- Calculation Algorithm was implemented using a dynamic programming logic that looks for the least amount of packages to be sent and then looks for the solution that ships less units, ie. smaller package sizes. 
+- REST API can be split into 2: CRUD for products and specific add/remove package size to product and calculate package units. API docs can be consulted in `/docs` HTTP endpoint.
+- Calculation Algorithm was implemented using a dynamic programming logic that looks for the least amount of packages to be sent and then looks for the solution that ships less units, ie. smaller package sizes.
+- I spent much more time on the backend than in the frontend. Frontend was quickly built using React and Typescript since those are the technologies I'm more comfortable with. 
+- Disclaimer: I've used AI (ie. chatgpt) to create boilerplate code. This task took me some hours and using AI made it a bit faster and less tedious.
 
-## TODOS 
-- tests
+## Notes on testing 
+- Wrote unit tests for service layer. 
+- Wrote Integration tests (`/backend/tests`) to validate storage and server layer comply with the requirements.
+- My opinion on unit tests is: they're good for complex use cases but they miss the integration layers (which in a service like this one are more than 50% of the logic). That being said I think they should be complemented with integration or E2E tests that actually validate the API is working as expected and won't break on any changes.
