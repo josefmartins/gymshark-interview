@@ -9,8 +9,8 @@
 - run `npm start`. It might take some seconds to minutes but eventually the app will be available in a browser via `localhost:3000`
 
 ## How to use
-- If you want to see the backend API, visit the page `localhost:8080/docs`. 
 - Access `http://ec2-18-212-206-26.compute-1.amazonaws.com/` and use the UI.
+- If you want to see the backend API, visit the page `localhost:8080/docs` - requires local build. 
 
 #### Calculate Number of Packages
 ![calculate packaging](docs/calculate_packaging.png "Calculate Packaging")
