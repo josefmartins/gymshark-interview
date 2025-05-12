@@ -1,13 +1,3 @@
-## How to build
-#### Requirements
-- Go and Node should be installed locally. If go is not installed, there is a Dockerfile available under `/build`.
-#### Backend 
-- in a shell: change the working directory to `/backend` 
-- run `make` . That'll start the application and you'll see a log entry similar to `2025/09/32 21:37:04 server started. listening on port :8080` 
-#### Frontend
-- in a shell: change the working directory to `/backend/product-app`
-- run `npm start`. It might take some seconds to minutes but eventually the app will be available in a browser via `localhost:3000`
-
 ## How to use
 - Access `http://ec2-18-212-206-26.compute-1.amazonaws.com/` and use the UI.
 - If you want to see the backend API, visit the page `localhost:8080/docs` - requires local build. 
@@ -21,6 +11,16 @@
 
 #### Delete a Product
 ![delete product](docs/delete_product_1.png "Delete Product")
+
+## How to build
+#### Requirements
+- Go and Node should be installed locally. If go is not installed, there is a Dockerfile available under `/build`.
+#### Backend 
+- in a shell: change the working directory to `/backend` 
+- run `make` . That'll start the application and you'll see a log entry similar to `2025/09/32 21:37:04 server started. listening on port :8080` 
+#### Frontend
+- in a shell: change the working directory to `/backend/product-app`
+- run `npm start`. It might take some seconds to minutes but eventually the app will be available in a browser via `localhost:3000`
 
 ## Notes on implementation
 - Using SQLite for ease of deployment. In production, this could be a SQL/NoSQL database with persistence, such as PostgreSQL or DynamoDB.
