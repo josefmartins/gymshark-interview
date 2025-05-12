@@ -10,8 +10,7 @@
 - REST API can be split into 2: CRUD for products and specific add/remove package size to product and calculate package units. API docs can be consulted in: TODO 
 - Calculation Algorithm was implemented using a dynamic programming logic that looks for the least amount of packages to be sent and then looks for the solution that ships less units, ie. smaller package sizes. 
 
-## TODO
+## TODOS 
 - tests
-- UI
-- deploy https://dev.to/joselatines/sites-to-deploy-any-application-paidfree-alternatives-3em8 
-
+- how to build
+- how to use

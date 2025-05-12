@@ -11,7 +11,7 @@ interface PackageCalcResult {
   units: number;
 }
 
-const API_URL = 'http://localhost:8080/v1/products';
+const API_URL = process.env.REACT_APP_API_URL + '/v1/products';
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
