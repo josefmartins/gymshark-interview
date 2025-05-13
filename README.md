@@ -28,7 +28,7 @@
 - List products endpoint should be paginated.   
 - Split the backend in 3 different layers to keep domains segregated: server, service (actual business logic) and storage. models package is common to the logical layers and makes mapping easier.
 - REST API can be split into 2: CRUD for products and specific add/remove package size to product and calculate package units. API docs can be consulted in `/docs` HTTP endpoint.
-- Calculation Algorithm was implemented using a dynamic programming logic that looks for the least amount of packages to be sent and then looks for the solution that ships less units, ie. smaller package sizes.
+- Calculation Algorithm was implemented using a dynamic programming logic that looks for the least amount of packages to be sent and then looks for the solution that ships less units, ie. smaller package sizes. In addition it looks up the least common multiple to create an offset of biggest package in size. 
 - I spent much more time on the backend than in the frontend. Frontend was quickly built using React and Typescript since those are the technologies I'm more comfortable with. 
 - Disclaimer: I've used AI (ie. chatgpt) to create boilerplate code. This task took me some hours and using AI made it a bit faster and less tedious.
 
